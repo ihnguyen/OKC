@@ -1,0 +1,82 @@
+---
+title: "Data Science and Solutions Technical Assessment"
+author: "Thuy-Nhi Nguyen"
+date: "1/7/2022"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+
+# Data Exploration
+
+```{r}
+addmargins(table(shots_data$team, shots_data$fgmade))
+# team A made 105 shots out of 280 attempted
+# team B made 115 shots out of 280 attempted
+```
+
+```{r}
+two_point <- subset(shots_data, x <= 22 & x >= -22)
+addmargins(table(two_point$team, two_point$fgmade))
+# 105 out of 280 attempts were made for team A
+# 115 out of 280 attempts were made for team B
+95/256
+108/255
+
+(95 +(0.5 *8))/256
+(108 +(0.5 *6))/255
+```
+
+
+```{r}
+ncthree_point <- subset(shots_data, x > 23.73 & y > 7.8 | x < -23.75 & y < -7.8)
+head(ncthree_point)
+# none
+```
+
+```{r}
+cthree_point <- subset(shots_data, x > 22 & y <= 7.8 | x < -22  & y >= -7.8)
+addmargins(table(cthree_point$team, cthree_point$fgmade))
+# 8 out of 20 attempts were made for team A
+# 6 out of 23 attempts were made for team B
+8/20
+6/23
+
+(8 +(0.5 *8))/20
+(6 +(0.5 *6))/23
+```
+
+## Shot Distribution for each team
+
+Shot distribution of Team A is 37.5%
+
+Shot distribution of Team B is 42.1%
+
+
+```{r}
+105/280
+115/280
+```
+
+## eFG% for each team
+
+eFG% = (Field goals made + (0.5* 3 pts made) / Field goals attempted )
+
+
+
+## Notes provided:
+
+1) court_diagram.jpg
+• An annotated diagram of the official NBA Court. All markers are measured in feet relative to the center of the hoop
+• For all “Non Corner” 3’s (where Y > 7.8), the 3PT line is 23.75 ft from the center of the hoop
+• For all “Corner” 3’s (where Y <= 7.8), the 3PT line is 22 feet from the court’s Y-axis at all points (note the definition of “Corner” 3 is not determined by the “break” in the arc)
+2) shots_data.csv
+• team: name of team (Team A, Team B)
+• x: X-coordinate of the shot, measured in feet
+• y: Y-coordinate of the shot, measured in feet
+• fgmade: boolean value indicating the outcome of the shot (0=Miss, 1=Make)
+
+Determine the shot zones (2PT, NC3, or C3) and calculate for each team the shot distribution and eFG%
+Shot distribution: the percentage of team shots attempted within a zone
+eFG%: the effective field goal percentage of team shots within a zone
