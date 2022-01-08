@@ -8,7 +8,6 @@ output:
 ---
 
 
-# Data Exploration
 
 ```{r}
 addmargins(table(shots_data$team, shots_data$fgmade))
@@ -47,36 +46,4 @@ addmargins(table(cthree_point$team, cthree_point$fgmade))
 (6 +(0.5 *6))/23
 ```
 
-## Shot Distribution for each team
 
-Shot distribution of Team A is 37.5%
-
-Shot distribution of Team B is 42.1%
-
-
-```{r}
-105/280
-115/280
-```
-
-## eFG% for each team
-
-eFG% = (Field goals made + (0.5* 3 pts made) / Field goals attempted )
-
-
-
-## Notes provided:
-
-1) court_diagram.jpg
-• An annotated diagram of the official NBA Court. All markers are measured in feet relative to the center of the hoop
-• For all “Non Corner” 3’s (where Y > 7.8), the 3PT line is 23.75 ft from the center of the hoop
-• For all “Corner” 3’s (where Y <= 7.8), the 3PT line is 22 feet from the court’s Y-axis at all points (note the definition of “Corner” 3 is not determined by the “break” in the arc)
-2) shots_data.csv
-• team: name of team (Team A, Team B)
-• x: X-coordinate of the shot, measured in feet
-• y: Y-coordinate of the shot, measured in feet
-• fgmade: boolean value indicating the outcome of the shot (0=Miss, 1=Make)
-
-Determine the shot zones (2PT, NC3, or C3) and calculate for each team the shot distribution and eFG%
-Shot distribution: the percentage of team shots attempted within a zone
-eFG%: the effective field goal percentage of team shots within a zone
